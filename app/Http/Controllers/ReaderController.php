@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Reader;
 class ReaderController extends Controller
 {
+    //Trang chủ
+    public function home()
+    {
+        return view('home');  
+    }
     //Hiển thị danh sách các độc giả
     public function index()
     {
