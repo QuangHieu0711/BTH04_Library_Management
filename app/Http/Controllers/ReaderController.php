@@ -14,14 +14,14 @@ class ReaderController extends Controller
     //Hiển thị danh sách các độc giả
     public function index()
     {
-        $readers = Reader::all();
-        return view("reader.index", compact("readers"));
+        $readers = Reader::paginate(12);
+        return view("readers.index", compact("readers"));
     }
 
     //Hiển thị form tạo mới độc giả
     public function create()
     {
-        return view("reader.create");
+        return view("readers.create");
     }
 
     //Lưu độc giả mới
@@ -36,21 +36,21 @@ class ReaderController extends Controller
         //Tạo mới độc giả trong CSDL
         Reader::create($request->all());
         //Chuyển hướng về trang danh sách độc giả
-        return redirect()->route('reader.index')->with('success','Bạn đã thêm độc giả thành công!');
+        return redirect()->route('readers.index')->with('success','Bạn đã thêm độc giả thành công!');
     }
 
     //Tìm kiếm độc giả theo tên
     public function show(string $name)
     {
         $reader = Reader::where('name', 'like', '%' . $name . '%')->firstOrFail();
-        return view('reader.show', compact('reader'));
+        return view('readers.show', compact('reader'));
     }
 
     //Hiển thị form sửa thông tin độc giả
     public function edit(string $id)
     {
         $reader = Reader::findOrFail($id);
-        return view('reader.edit', compact('reader'));
+        return view('readers.edit', compact('reader'));
     }
 
     //Cập nhật thông tin độc giả
@@ -64,7 +64,7 @@ class ReaderController extends Controller
         ]);
         $reader = Reader::findOrFail($id);
         $reader->update($request->all());
-        return redirect()->route('reader.index')->with('success','Cập nhật thông tin độc giả thành công!');
+        return redirect()->route('readers.index')->with('success','Cập nhật thông tin độc giả thành công!');
     }
 
     //Xóa độc giả
@@ -72,6 +72,6 @@ class ReaderController extends Controller
     {
         $reader = Reader::findOrFail($id);
         $reader->delete();
-        return redirect()->route('reader.index')->with('success','Xóa độc giả thành công!');
+        return redirect()->route('readers.index')->with('success','Xóa độc giả thành công!');
     }
 }
