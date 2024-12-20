@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('borrow_date');
             $table->date('return_date');
             $table->boolean('status')->default(0); // 0: Đang mượn, 1: Đã trả
-            $table->timestamps();
             //đây là điểm khác biệt so với BTTH03 mà SV cần lưu ý
             $table->foreign('reader_id')->references('id')->on('readers');
             $table->foreign('book_id')->references('id')->on('books'); 
