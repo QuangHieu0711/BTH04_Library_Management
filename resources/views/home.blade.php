@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>TRANG CHỦ</title>
+    <title>Home Library</title>
     <!-- Script para el tema oscuro -->
     <script src="color-modes.js"></script>
     <!-- Bootstrao 5.3.2 -->
@@ -313,8 +313,8 @@
             <div class="dropdown fixed-bottom-end">
                 <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="true">
-                    <img src="https://avatars.githubusercontent.com/u/162896131?v=4&size=64" alt="" width="32" height="32" class="rounded-circle me-2">
-                    <span class="d-print-block"><strong>Quang Hiếu</strong></span>
+                    <img src="https://avatars.githubusercontent.com/u/169624553?v=4&size=64" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <span class="d-print-block"><strong>Hiền Lương</strong></span>
                 </a>
                 <ul class="dropdown-menu text-small shadow">
                     <li><a class="dropdown-item" href="#">New project...</a></li>
