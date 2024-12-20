@@ -9,7 +9,7 @@
             <div class="table-title mt-4">
                 <div class="row">
                     <div class="col-sm-6">
-                        <a href="" class="btn btn-success"><i class="bi bi-person-plus"></i> <span>Thêm độc giả</span></a>
+                        <a href="{{ route('reader.create') }}" class="btn btn-success"><i class="bi bi-person-plus"></i> <span>Thêm độc giả</span></a>
 
                     </div>
                 </div>
@@ -26,9 +26,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($readers as $reader)
+                    @foreach ($readers as $index => $reader)
                     <tr>
-                        <td>{{ $reader->id }}</td>
+                        <!-- Tính thứ tự: (Trang hiện tại - 1) * Số bản ghi mỗi trang + chỉ số trong trang + 1 -->
+                        <td>{{ ($readers->currentPage() - 1) * $readers->perPage() + $index + 1 }}</td>
                         <td>{{ $reader->name }}</td>
                         <td>{{ $reader->birthday }}</td>
                         <td>{{ $reader->address }}</td>
@@ -44,42 +45,42 @@
             <div class="clearfix">
                 <div class="pagination-wrapper" style="float: right;">
                     @if ($readers->hasPages())
-                        <ul class="pagination">
-                            {{-- Previous Page Link --}}
-                            @if ($readers->onFirstPage())
-                                <li class="disabled"><span>&laquo;</span></li>
-                            @else
-                                <li><a href="{{ $readers->previousPageUrl() }}" rel="prev">&laquo;</a></li>
-                            @endif
+                    <ul class="pagination">
+                        {{-- Previous Page Link --}}
+                        @if ($readers->onFirstPage())
+                        <li class="disabled"><span>&laquo;</span></li>
+                        @else
+                        <li><a href="{{ $readers->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                        @endif
 
-                            {{-- Pagination Elements --}}
-                            @foreach ($readers->links()->elements as $element)
-                                {{-- "Three Dots" Separator --}}
-                                @if (is_string($element))
-                                    <li class="disabled"><span>{{ $element }}</span></li>
-                                @endif
+                        {{-- Pagination Elements --}}
+                        @foreach ($readers->links()->elements as $element)
+                        {{-- "Three Dots" Separator --}}
+                        @if (is_string($element))
+                        <li class="disabled"><span>{{ $element }}</span></li>
+                        @endif
 
-                                {{-- Array Of Links --}}
-                                @if (is_array($element))
-                                    @foreach ($element as $page => $url)
-                                        @if ($page == $readers->currentPage())
-                                            <li class="active"><span>{{ $page }}</span></li>
-                                        @elseif ($page == 1 || $page == 2 || $page == 3 || $page == $readers->lastPage() || $page == $readers->lastPage() - 1 || $page == $readers->lastPage() - 2)
-                                            <li><a href="{{ $url }}">{{ $page }}</a></li>
-                                        @elseif ($page == 4)
-                                            <li class="disabled"><span>...</span></li>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            @endforeach
+                        {{-- Array Of Links --}}
+                        @if (is_array($element))
+                        @foreach ($element as $page => $url)
+                        @if ($page == $readers->currentPage())
+                        <li class="active"><span>{{ $page }}</span></li>
+                        @elseif ($page == 1 || $page == 2 || $page == 3 || $page == $readers->lastPage() || $page == $readers->lastPage() - 1 || $page == $readers->lastPage() - 2)
+                        <li><a href="{{ $url }}">{{ $page }}</a></li>
+                        @elseif ($page == 4)
+                        <li class="disabled"><span>...</span></li>
+                        @endif
+                        @endforeach
+                        @endif
+                        @endforeach
 
-                            {{-- Next Page Link --}}
-                            @if ($readers->hasMorePages())
-                                <li><a href="{{ $readers->nextPageUrl() }}" rel="next">&raquo;</a></li>
-                            @else
-                                <li class="disabled"><span>&raquo;</span></li>
-                            @endif
-                        </ul>
+                        {{-- Next Page Link --}}
+                        @if ($readers->hasMorePages())
+                        <li><a href="{{ $readers->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                        @else
+                        <li class="disabled"><span>&raquo;</span></li>
+                        @endif
+                    </ul>
                     @endif
                 </div>
             </div>

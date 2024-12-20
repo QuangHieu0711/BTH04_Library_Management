@@ -402,7 +402,7 @@
         </div>
     </main>
     <!-- Footer -->
-    <footer class="footer_area section_padding_130_0" style="margin-left: 280px;">
+    <footer class="footer_area section_padding_130_0 mt-4" style="margin-left: 280px;">
         <div class="container">
             <div class="row">
                 <!-- Single Widget-->
