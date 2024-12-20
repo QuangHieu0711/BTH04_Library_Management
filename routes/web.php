@@ -20,4 +20,4 @@ use App\Http\Controllers\ReaderController;
             Route::get('/{name}', [BookController::class, 'show'])->name('book.show');
             Route::get('/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
             Route::put('/{id}', [BookController::class, 'update'])->name('book.update');
-});
+    });

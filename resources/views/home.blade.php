@@ -67,6 +67,7 @@
             left: 10px;
             z-index: 1050;
         }
+
         body {
             margin-top: 20px;
         }
@@ -250,7 +251,6 @@
             margin: 0;
             padding: 0;
         }
-        
     </style>
 
 
@@ -295,14 +295,13 @@
             </li>
 
             <li>
-                <a href="#" class="nav-link link-body-emphasis">
+                <a href="{{ route('reader.index') }}" class="nav-link link-body-emphasis">
                     <p class="d-flex align-items-center" style="position:fixed;">
-                        <i class="bi bi-people " style="font-size: 20px;"></i>
+                        <i class="bi bi-people" style="font-size: 20px;"></i>
                         <span class="ms-2">Reader</span>
                     </p><br>
                 </a>
             </li>
-
             <li>
                 <a href="#" class="nav-link link-body-emphasis">
                     <p class="d-flex align-items-center" style="position:fixed;">
@@ -355,64 +354,64 @@
                 <img src="https://danviet.mediacdn.vn/296231569849192448/2022/1/8/3-1641617895804185513079.jpeg" alt="National Library" class="img-fluid" style="width: 18000px; height: 500px;" />
             </div>
     </main>
-<!-- Footer -->
-<footer class="footer_area section_padding_130_0" style="margin-left: 280px;">
-    <div class="container">
-        <div class="row">
-            <!-- Single Widget-->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-footer-widget section_padding_0_130">
-                    <!-- Footer Logo-->
-                    <div class="footer-logo mb-3"></div>
-                    <p>Bản quyền này thuộc về nhóm Đỉnh Count CNW.</p>
-                </div>
-            </div>
-            <!-- Single Widget-->
-            <div class="col-12 col-sm-6 col-lg">
-                <div class="single-footer-widget section_padding_0_130">
-                    <!-- Widget Title-->
-                    <h5 class="widget-title">Thành viên nhóm</h5>
-                    <!-- Footer Menu-->
-                    <div class="footer_menu">
-                        <ul>
-                            <li><a href="#">Nguyễn Quang Hiếu</a></li>
-                            <li><a href="#">Lương Thị Thùy Liên</a></li>
-                            <li><a href="#">Đỗ Thị Hiền Lương</a></li>
-                        </ul>
+    <!-- Footer -->
+    <footer class="footer_area section_padding_130_0" style="margin-left: 280px;">
+        <div class="container">
+            <div class="row">
+                <!-- Single Widget-->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-footer-widget section_padding_0_130">
+                        <!-- Footer Logo-->
+                        <div class="footer-logo mb-3"></div>
+                        <p>Bản quyền này thuộc về nhóm Đỉnh Count CNW.</p>
                     </div>
                 </div>
-            </div>
-            <!-- Single Widget-->
-            <div class="col-12 col-sm-6 col-lg">
-                <div class="single-footer-widget section_padding_0_130">
-                    <!-- Widget Title-->
-                    <h5 class="widget-title">Được hướng dẫn</h5>
-                    <!-- Footer Menu-->
-                    <div class="footer_menu">
-                        <ul>
-                            <li><a href="#">Kiều Tuấn Dũng</a></li>
-                            <li><a href="#">Tạ Chí Hiếu</a></li>
-                        </ul>
+                <!-- Single Widget-->
+                <div class="col-12 col-sm-6 col-lg">
+                    <div class="single-footer-widget section_padding_0_130">
+                        <!-- Widget Title-->
+                        <h5 class="widget-title">Thành viên nhóm</h5>
+                        <!-- Footer Menu-->
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="#">Nguyễn Quang Hiếu</a></li>
+                                <li><a href="#">Lương Thị Thùy Liên</a></li>
+                                <li><a href="#">Đỗ Thị Hiền Lương</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Single Widget-->
-            <div class="col-12 col-sm-6 col-lg">
-                <div class="single-footer-widget section_padding_0_130">
-                    <!-- Widget Title-->
-                    <h5 class="widget-title">Contact</h5>
-                    <!-- Footer Menu-->
-                    <div class="footer_menu">
-                        <ul>
-                            <li><a href="#">64KTPM3</a></li>
-                            <li><a href="#">Thuy Loi University</a></li>
-                        </ul>
+                <!-- Single Widget-->
+                <div class="col-12 col-sm-6 col-lg">
+                    <div class="single-footer-widget section_padding_0_130">
+                        <!-- Widget Title-->
+                        <h5 class="widget-title">Được hướng dẫn</h5>
+                        <!-- Footer Menu-->
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="#">Kiều Tuấn Dũng</a></li>
+                                <li><a href="#">Tạ Chí Hiếu</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Widget-->
+                <div class="col-12 col-sm-6 col-lg">
+                    <div class="single-footer-widget section_padding_0_130">
+                        <!-- Widget Title-->
+                        <h5 class="widget-title">Contact</h5>
+                        <!-- Footer Menu-->
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="#">64KTPM3</a></li>
+                                <li><a href="#">Thuy Loi University</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
 
     <!-- Script de bootstap 5.2.3 -->
