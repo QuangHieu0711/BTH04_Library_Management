@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->date('birthday');
             $table->string('address');
-            $table->string('phone',11);
-            $table->timestamps();
+            $table->string('phone');
         });
     }
+
     /**
      * Reverse the migrations.
      */
