@@ -67,17 +67,19 @@ class ReaderController extends Controller
     }
 
     //Cập nhật thông tin độc giả
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'birthday' => 'required|date',
             'address' => 'required|string|max:255',
-            'phone' => 'required|string|max:11',
+            'phone' => 'required|string|max:15',
         ]);
+
         $reader = Reader::findOrFail($id);
-        $reader->update($request->all());
-        return redirect()->route('readers.index')->with('success', 'Cập nhật thông tin độc giả thành công!');
+        $reader->update($request->only(['name', 'birthday', 'address', 'phone']));
+
+        return redirect()->route('reader.index')->with('success', 'Thông tin độc giả đã được cập nhật thành công.');
     }
 
     //Xóa độc giả
