@@ -43,18 +43,26 @@ class BookController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
-            'year' => 'required|integer',
-            'quantity' => 'required|integer',
-        ]);
-        $book = Book::findOrFail($id);
-        $book->update($request->all());
-        return redirect()->route('books.index')->with('success', 'Thông tin sách đã được cập nhật!');
-    }
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'author' => 'required|string|max:255',
+        'category' => 'required|string|max:255',
+        'year' => 'required|integer',
+        'quantity' => 'required|integer',
+    ]);
+
+    $book = Book::findOrFail($id);
+    $book->update([
+        'name' => $request->name,
+        'author' => $request->author,
+        'category' => $request->category,
+        'year' => $request->year,
+        'quantity' => $request->quantity,
+    ]);
+
+    return redirect()->route('book.index')->with('success', 'Cập nhật sách thành công!');
+}
 
     public function destroy($id)
     {
