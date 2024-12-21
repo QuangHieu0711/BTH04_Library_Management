@@ -18,7 +18,7 @@ class BookSeeder extends Seeder
         // Tạo Faker instance
         $faker = Faker::create();
 
-        // Chèn 50 sách vào bảng books
+        // Chèn 100 sách vào bảng books
         foreach (range(1, 100) as $index) {
             DB::table('books')->insert([
                 'name' => $faker->sentence(3),
