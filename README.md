@@ -16,7 +16,7 @@
 Đây là giao diện chính của quản lý sách.
 ![Giao diện sách](assets/images/Giaodiensach.png)
 Đây là giao diện chính của quản lý phiếu mượn.
-![Giao diện phiếu mượn](assets/images/Giaodienphieumuon.jpg)
+![Giao diện phiếu mượn](assets/images/Giaodienphieumuon.png)
 
 
 ## Learning Laravel
