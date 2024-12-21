@@ -1,34 +1,28 @@
 
 @extends('layouts.app')
 
-@section('title', 'Danh sách phiếu mượn (BORROW)')
+@section('title', 'DANH SÁCH PHIẾU MƯỢN (BORROW)')
 
 @section('content')
 <div class="container-xl">
     @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (session('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    @if (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title mt-4">
                 <div class="row">
                     <div class="col-sm-6">
                         <a href="{{ route('borrow.create') }}" class="btn btn-success"><i class="bi bi-plus-circle"></i> <span>Thêm phiếu mượn</span></a>
-                    </div>
-                    <div class="col-sm-6">
-                        <form action="{{ route('borrow.searchByReaderName') }}" method="GET" class="d-flex">
-                            <input type="text" name="name" class="form-control" placeholder="Tìm kiếm theo tên độc giả">
-                            <button type="submit" class="btn btn-primary ms-2"><i class="bi bi-search"></i> Tìm kiếm</button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -44,20 +38,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($borrows as $borrow)
+                    @foreach ($borrows as $index => $borrow)
                     <tr>
-                        <td>{{ $borrow->id }}</td>
+                        <!-- Tính thứ tự: (Trang hiện tại - 1) * Số bản ghi mỗi trang + chỉ số trong trang + 1 -->
+                        <td>{{ ($borrows->currentPage() - 1) * $borrows->perPage() + $index + 1 }}</td>
                         <td>{{ $borrow->reader->name }}</td>
                         <td>{{ $borrow->book->name }}</td>
                         <td>{{ $borrow->borrow_date }}</td>
                         <td>{{ $borrow->return_date }}</td>
                         <td>
-                            <a href="{{ route('borrow.edit', $borrow->id) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Sửa</a>
-                            <form action="{{ route('borrow.destroy', $borrow->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Xóa</button>
-                            </form>
+                            <!-- Nút chỉnh sửa -->
+                            <a href="{{ route('borrow.edit', $borrow->id) }}" class="edit" data-toggle="tooltip" title="Edit"><i class="bi bi-pencil-fill text-warning ms-2"></i></a>
+
+                            <!-- Nút mở modal xóa -->
+                            <a href="#deleteBorrowModal{{ $borrow->id }}" class="delete" data-bs-toggle="modal" title="Delete"><i class="bi bi-trash text-danger ms-4"></i></a>
+                            <!-- Modal xác nhận xóa -->
+                            <div id="deleteBorrowModal{{ $borrow->id }}" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="{{ route('borrow.destroy', $borrow->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Xác nhận xóa</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Bạn có chắc chắn muốn xóa bản ghi này?</p>
+                                                <p class="text-warning"><small>Hành động này không thể hoàn tác.</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
