@@ -38,6 +38,7 @@
             </div>
             <br>
 
+            
             <div class="d-flex justify-content-between">
                 <a href="{{ route('borrow.index') }}" class="btn btn-secondary me-2">
                     <i class="bi bi-arrow-left-circle-fill"></i> Quay lại
