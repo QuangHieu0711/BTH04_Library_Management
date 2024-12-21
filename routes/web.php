@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReaderController;
+use App\Http\Controllers\BorrowController;
 
     Route::get("/", [ReaderController::class,"home"])->name('home');
     Route::prefix('readers')->group(function () {
@@ -19,4 +20,13 @@ use App\Http\Controllers\ReaderController;
             Route::post('/store', [BookController::class, 'store'])->name('book.store');
             Route::get('/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
             Route::put('/{id}', [BookController::class, 'update'])->name('book.update');
-});
+    });
+    Route::prefix('borrows')->group(function () {
+        Route::get('/', [BorrowController::class, 'index'])->name('borrow.index');
+        Route::get('borrow/searchByReaderName', [BorrowController::class, 'searchByReaderName'])->name('borrow.searchByReaderName');
+        Route::get('/create', [BorrowController::class, 'create'])->name('borrow.create');
+        Route::post('/store', [BorrowController::class, 'store'])->name('borrow.store');
+        Route::get('/{id}/edit', [BorrowController::class, 'edit'])->name('borrow.edit');
+        Route::put('/{id}', [BorrowController::class, 'update'])->name('borrow.update');
+        Route::delete('/{id}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
+    });
