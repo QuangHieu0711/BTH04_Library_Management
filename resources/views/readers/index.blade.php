@@ -47,12 +47,38 @@
                         <td>{{ $reader->address }}</td>
                         <td>{{ $reader->phone }}</td>
                         <td>
+                            <!-- Nút chỉnh sửa -->
                             <a href="{{ route('reader.edit', $reader->id) }}" class="edit" data-toggle="tooltip" title="Edit"><i class="bi bi-pencil-fill text-warning ms-2"></i></a>
-                            <a href="#deleteReaderModal{{ $reader->id }}" class="delete" data-toggle="modal" title="Delete"><i class="bi bi-trash text-danger ms-4"></i></a>
-                        </td>
-                    </tr>
-                    @endforeach
+
+                            <!-- Nút mở modal xóa -->
+                            <a href="#deleteReaderModal{{ $reader->id }}" class="delete" data-bs-toggle="modal" title="Delete"><i class="bi bi-trash text-danger ms-4"></i></a>
+                            <!-- Modal xác nhận xóa -->
+                            <div id="deleteReaderModal{{ $reader->id }}" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="{{ route('reader.destroy', $reader->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Xác nhận xóa</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Bạn có chắc chắn muốn xóa bản ghi này?</p>
+                                                <p class="text-warning"><small>Hành động này không thể hoàn tác.</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @endforeach
                 </tbody>
+
             </table>
             <div class="clearfix">
                 <div class="pagination-wrapper" style="float: right;">
