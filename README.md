@@ -1,16 +1,20 @@
 ## QUẢN LÝ THƯ VIỆN
+
 1. Quản lý sách: Đỗ Thị Hiền Lương
-o Lưu trữ thông tin sách.Cho phép thêm mới, chỉnh sửa và xóa thông tin sách.
+   o Lưu trữ thông tin sách.Cho phép thêm mới, chỉnh sửa và xóa thông tin sách.
 2. Quản lý độc giả: Nguyễn Quang Hiếu
-o Lưu trữ thông tin độc giả. Cho phép thêm mới, chỉnh sửa và xóa thông tin độc giả.
+   o Lưu trữ thông tin độc giả. Cho phép thêm mới, chỉnh sửa và xóa thông tin độc giả.
 3. Quản lý mượn trả sách: Lương Thị Thùy Liên
-o Ghi nhận thông tin mượn sách.Cập nhật trạng thái trả sách.Cho phép xem lịch sử mượn trả sách của từng độc giả.
+   o Ghi nhận thông tin mượn sách.Cập nhật trạng thái trả sách.Cho phép xem lịch sử mượn trả sách của từng độc giả.
+
 ## Giao diện ứng dụng
+
 Đây là giao diện chính của quản lý thư viên.
 ![Giao diện trang chủ](assets/images/Giaodientrangchu.jpg)
-Đây là giao diện chính của quản lý sách.
+Đây là giao diện chính của quản lý độc giả.
 ![Giao diện độc giả](assets/images/Giaodiendocgia.png)
-
+Đây là giao diện chính của quản lý sách
+![Giao diện sách](assets/images/GiaoDienSach.png)
 
 ## Learning Laravel
 
@@ -26,19 +30,19 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   **[Vehikl](https://vehikl.com/)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[WebReinvent](https://webreinvent.com/)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+-   **[Cyber-Duck](https://cyber-duck.co.uk)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Jump24](https://jump24.co.uk)**
+-   **[Redberry](https://redberry.international/laravel/)**
+-   **[Active Logic](https://activelogic.com)**
+-   **[byte5](https://byte5.de)**
+-   **[OP.GG](https://op.gg)**
 
 ## Contributing
 
