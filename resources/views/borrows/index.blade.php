@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title', 'QUẢN LÝ PHIẾU MƯỢN (BORROW)')
@@ -27,12 +26,34 @@
                 </div>
             </div>
             <style>
-                /* CSS tùy chỉnh để giảm khoảng cách giữa các hàng trong bảng */
                 .table tbody tr {
-                    padding: 0.05rem 0.25rem; /* Điều chỉnh padding theo nhu cầu */
+                    padding: 0.1rem 1rem;
                 }
                 .table tbody tr td {
-                    padding: 0.05rem 0.25rem; /* Điều chỉnh padding theo nhu cầu */
+                    padding: 0.1rem 1rem;
+                    vertical-align: middle;
+                }
+                .btn-returned, .btn-borrowing {
+                    font-size: 1rem; /* Cỡ chữ */
+                    padding: 0.2rem 0.5rem; /* Padding */
+                    border-radius: 0.2rem; /* Bo góc */
+                }
+                .btn-returned {
+                    background-color: #6c757d;
+                    color: #fff;
+                    cursor: not-allowed;
+                }
+                .btn-borrowing {
+                    background-color: #28a745;
+                    color: #fff;
+                }
+                .table th, .table td {
+                    text-align: left; /* Căn trái cho các ô */
+                }
+                .action-buttons a,
+                .action-buttons form,
+                .action-buttons span {
+                    margin-right: 15px; /* Khoảng cách giữa các nút */
                 }
             </style>
             <table class="table table-striped table-hover">
@@ -49,28 +70,31 @@
                 <tbody>
                     @foreach ($borrows as $index => $borrow)
                     <tr>
-                        <!-- Tính thứ tự: (Trang hiện tại - 1) * Số bản ghi mỗi trang + chỉ số trong trang + 1 -->
                         <td>{{ ($borrows->currentPage() - 1) * $borrows->perPage() + $index + 1 }}</td>
                         <td>{{ $borrow->reader->name }}</td>
                         <td>{{ $borrow->book->name }}</td>
                         <td>{{ $borrow->borrow_date }}</td>
                         <td>{{ $borrow->return_date }}</td>
-                        <td>
+                        <td class="action-buttons">
                             <!-- Nút chỉnh sửa -->
                             <a href="{{ route('borrow.edit', $borrow->id) }}" class="btn btn-warning text-white" data-toggle="tooltip" title="Edit"><i class="bi bi-pencil-fill"></i></a>
 
                             <!-- Nút mở modal xóa -->
-                            <a href="#deleteBorrowModal{{ $borrow->id }}" class="btn btn-danger text-white ms-2" data-bs-toggle="modal" title="Delete"><i class="bi bi-trash"></i></a>
+                            <a href="#deleteBorrowModal{{ $borrow->id }}" class="btn btn-danger text-white" data-bs-toggle="modal" title="Delete"><i class="bi bi-trash"></i></a>
 
-                            <!-- Nút cập nhật trạng thái trả sách -->
+                            <!-- Nút cập nhật trạng thái mượn trả sách -->
+                            @if ($borrow->status == 0)
                             <form action="{{ route('borrow.updateStatus', $borrow->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="btn btn-success text-white ms-2" data-toggle="tooltip" title="Update Status"><i class="bi bi-check-circle"></i></button>
+                                <button type="submit" class="btn btn-borrowing text-white" data-toggle="tooltip" title="Update Status">Đang mượn</button>
                             </form>
+                            @else
+                            <span class="btn btn-returned"><i class="bi bi-check-circle"></i> Đã trả</span>
+                            @endif
 
                             <!-- Nút xem lịch sử mượn trả sách -->
-                            <a href="{{ route('borrow.history', $borrow->reader->id) }}" class="btn btn-info text-white ms-2" data-toggle="tooltip" title="View History"><i class="bi bi-clock-history"></i></a>
+                            <a href="{{ route('borrow.history', $borrow->reader->id) }}" class="btn btn-info text-white" data-toggle="tooltip" title="View History"><i class="bi bi-clock-history"></i></a>
 
                             <!-- Modal xác nhận xóa -->
                             <div id="deleteBorrowModal{{ $borrow->id }}" class="modal fade">
