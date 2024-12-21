@@ -23,12 +23,13 @@ use App\Http\Controllers\BorrowController;
             Route::put('/{id}', [BookController::class, 'update'])->name('book.update');
             Route::delete('/{id}', [BookController::class, 'destroy'])->name('book.destroy');
     });
-    Route::prefix('borrows')->group(function () {
-        Route::get('/', [BorrowController::class, 'index'])->name('borrow.index');
-        Route::get('borrow/searchByReaderName', [BorrowController::class, 'searchByReaderName'])->name('borrow.searchByReaderName');
-        Route::get('/create', [BorrowController::class, 'create'])->name('borrow.create');
-        Route::post('/store', [BorrowController::class, 'store'])->name('borrow.store');
-        Route::get('/{id}/edit', [BorrowController::class, 'edit'])->name('borrow.edit');
-        Route::put('/{id}', [BorrowController::class, 'update'])->name('borrow.update');
-        Route::delete('/{id}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
-    });
+
+Route::prefix('borrows')->group(function () {
+    Route::get('/', [BorrowController::class, 'index'])->name('borrow.index');
+    Route::get('/create', [BorrowController::class, 'create'])->name('borrow.create');
+    Route::post('/store', [BorrowController::class, 'store'])->name('borrow.store');
+    Route::get('/{id}/edit', [BorrowController::class, 'edit'])->name('borrow.edit');
+    Route::put('/{id}', [BorrowController::class, 'update'])->name('borrow.update');
+    Route::delete('/{id}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
+    Route::get('borrow/searchByReaderName', [BorrowController::class, 'searchByReaderName'])->name('borrow.searchByReaderName');
+});
