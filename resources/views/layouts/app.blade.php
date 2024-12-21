@@ -306,6 +306,81 @@
             background-color: #fff;
             border-color: #dee2e6;
         }
+
+        
+        .pagination li {
+            display: inline;
+        }
+
+        .pagination li a,
+        .pagination li span {
+            position: relative;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: #007bff;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            text-decoration: none;
+        }
+
+        .pagination li a:hover {
+            color: #0056b3;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+        }
+
+        .pagination li.active span {
+            z-index: 1;
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .pagination li.disabled span {
+            color: #6c757d;
+            pointer-events: none;
+            background-color: #fff;
+            border-color: #dee2e6;
+        }
+
+        .table tbody tr {
+            padding: 0.1rem 1rem;
+        }
+
+        .table tbody tr td {
+            padding: 0.1rem 1rem;
+            vertical-align: middle;
+        }
+
+        .btn-returned, .btn-borrowing {
+            font-size: 1rem; /* Cỡ chữ */
+            padding: 0.2rem 0.5rem; /* Padding */
+            border-radius: 0.2rem; /* Bo góc */
+            width: 100px; /* Đảm bảo các nút có cùng chiều rộng */
+            text-align: center; /* Căn giữa văn bản */
+        }
+
+        .btn-returned {
+            background-color: #6c757d;
+            color: #fff;
+            cursor: not-allowed;
+        }
+
+        .btn-borrowing {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .action-buttons a,
+        .action-buttons form,
+        .action-buttons span {
+            margin-right: 15px; /* Khoảng cách giữa các nút */
+        }
+        .action-buttons .btn-info {
+        margin-left: 15px; /* Khoảng cách giữa nút "Lịch sử mượn" và nút "Đã trả" */
+    }
+
     </style>
 
 
