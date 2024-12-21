@@ -48,10 +48,10 @@
                         <td>{{ $borrow->return_date }}</td>
                         <td>
                             <!-- Nút chỉnh sửa -->
-                            <a href="{{ route('borrow.edit', $borrow->id) }}" class="edit" data-toggle="tooltip" title="Edit"><i class="bi bi-pencil-fill text-warning ms-2"></i></a>
+                            <a href="{{ route('borrow.edit', $borrow->id) }}" class="btn btn-warning text-white" data-toggle="tooltip" title="Edit"><i class="bi bi-pencil-fill"></i></a>
 
                             <!-- Nút mở modal xóa -->
-                            <a href="#deleteBorrowModal{{ $borrow->id }}" class="delete" data-bs-toggle="modal" title="Delete"><i class="bi bi-trash text-danger ms-4"></i></a>
+                            <a href="#deleteBorrowModal{{ $borrow->id }}" class="btn btn-danger text-white ms-2" data-bs-toggle="modal" title="Delete"><i class="bi bi-trash"></i></a>
                             <!-- Modal xác nhận xóa -->
                             <div id="deleteBorrowModal{{ $borrow->id }}" class="modal fade">
                                 <div class="modal-dialog">
