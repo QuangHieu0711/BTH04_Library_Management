@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>QUẢN LÝ ĐỘC GIẢ</title>
+    <title>QUẢN LÝ THƯ VIỆN</title>
     <!-- Script para el tema oscuro -->
     <script src="color-modes.js"></script>
     <!-- Bootstrao 5.3.2 -->
