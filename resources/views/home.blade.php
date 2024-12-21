@@ -278,7 +278,7 @@
 
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
-                <a href="#" class="nav-link link-body-emphasis">
+                <a href="{{route('home')}}" class="nav-link link-body-emphasis">
                     <p class="d-flex align-items-center" style="position:fixed;">
                         <i class="bi bi-house-door" style="font-size: 20px;"></i>
                         <span class="ms-2">Home</span>

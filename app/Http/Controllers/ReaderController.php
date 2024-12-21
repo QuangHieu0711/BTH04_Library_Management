@@ -82,11 +82,15 @@ class ReaderController extends Controller
         return redirect()->route('reader.index')->with('success', 'Thông tin độc giả đã được cập nhật thành công.');
     }
 
-    //Xóa độc giả
     public function destroy(string $id)
     {
-        $reader = Reader::findOrFail($id);
+        $reader = Reader::find($id);
+    
+        if (!$reader) {
+            return redirect()->route('reader.index')->with('error', 'Không tìm thấy độc giả!');
+        }
+    
         $reader->delete();
-        return redirect()->route('readers.index')->with('success', 'Xóa độc giả thành công!');
+        return redirect()->route('reader.index')->with('success', 'Xóa độc giả thành công!');
     }
 }
