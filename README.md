@@ -16,7 +16,7 @@ o Cho phép xem lịch sử mượn trả sách của từng độc giả.
 ## Giao diện ứng dụng
 Đây là giao diện chính của quản lý thư viên.
 
-[Giao diện trang chủ] (Giaodientrangchu.jpg)
+![Giao diện trang chủ](assets/images/Giaodientrangchu.jpg)
 
 
 
