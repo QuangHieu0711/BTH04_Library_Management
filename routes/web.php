@@ -32,4 +32,6 @@ Route::prefix('borrows')->group(function () {
     Route::put('/{id}', [BorrowController::class, 'update'])->name('borrow.update');
     Route::delete('/{id}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
     Route::get('borrow/searchByReaderName', [BorrowController::class, 'searchByReaderName'])->name('borrow.searchByReaderName');
+    Route::put('/borrows/{id}/update-status', [BorrowController::class, 'updateStatus'])->name('borrow.updateStatus');
+    Route::get('/borrows/history/{reader_id}', [BorrowController::class, 'history'])->name('borrow.history');
 });
