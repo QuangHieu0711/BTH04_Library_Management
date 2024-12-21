@@ -1,11 +1,24 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## QUẢN LÝ THƯ VIỆN
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Quản lý sách: Đỗ Thị Hiền Lương
+o Lưu trữ thông tin sách: Tên sách, tác giả, thể loại, năm xuất bản, số lượng bản sao.
+o Cho phép thêm mới, chỉnh sửa và xóa thông tin sách.
+
+## 2. Quản lý độc giả:Nguyễn Quang Hiếu
+o Lưu trữ thông tin độc giả: Họ tên, ngày sinh, địa chỉ, số điện thoại.
+o Cho phép thêm mới, chỉnh sửa và xóa thông tin độc giả.
+
+## 3. Quản lý mượn trả sách: Lương Thị Thùy Liên
+o Ghi nhận thông tin mượn sách: Độc giả, sách, ngày mượn, ngày trả
+o Cập nhật trạng thái trả sách.
+o Cho phép xem lịch sử mượn trả sách của từng độc giả.
+
+## Giao diện ứng dụng
+Đây là giao diện chính của quản lý thư viên.
+
+[Giao diện trang chủ] (Giaodientrangchu.jpg)
+
+
 
 ## About Laravel
 
