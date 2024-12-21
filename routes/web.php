@@ -21,7 +21,8 @@ use App\Http\Controllers\BorrowController;
             Route::post('/store', [BookController::class, 'store'])->name('book.store');
             Route::get('/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
             Route::put('/{id}', [BookController::class, 'update'])->name('book.update');
-            Route::delete('/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+            Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+
     });
 
 Route::prefix('borrows')->group(function () {

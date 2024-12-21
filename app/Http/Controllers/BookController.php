@@ -15,12 +15,12 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::paginate(10); 
-        return view('book.index', compact('books'));
+        return view('books.index', compact('books'));
     }
 
     public function create()
     {
-        return view('book.create');
+        return view('books.create');
     }
 
     public function store(Request $request)
@@ -33,13 +33,13 @@ class BookController extends Controller
             'quantity' => 'required|integer',
         ]);
         Book::create($request->all());
-        return redirect()->route('book.index')->with('success', 'Sách đã được thêm thành công!');
+        return redirect()->route('books.index')->with('success', 'Sách đã được thêm thành công!');
     }
 
     public function edit($id)
     {
         $book = Book::findOrFail($id);
-        return view('book.edit', compact('book'));
+        return view('books.edit', compact('book'));
     }
 
     public function update(Request $request, $id)
@@ -53,14 +53,18 @@ class BookController extends Controller
         ]);
         $book = Book::findOrFail($id);
         $book->update($request->all());
-        return redirect()->route('book.index')->with('success', 'Thông tin sách đã được cập nhật!');
+        return redirect()->route('books.index')->with('success', 'Thông tin sách đã được cập nhật!');
     }
 
     public function destroy($id)
     {
         $book = Book::findOrFail($id);
+    
+        // Xóa chính book
         $book->delete();
-        return redirect()->route('book.index')->with('success', 'Sách đã được xóa!');
+    
+        return redirect()->route('book.index')->with('success', 'Sách và dữ liệu liên quan đã được xóa!');
     }
+    
 }
 

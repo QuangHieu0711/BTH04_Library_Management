@@ -28,17 +28,18 @@
             <td>{{ $book->quantity }}</td>
             <td>
                 <!-- Liên kết đến form tạo sách -->
-                <a href="{{ route('books.create') }}" class="btn btn-primary">Thêm</a>
+                <a href="{{ route('book.create') }}" class="btn btn-primary">Thêm</a>
 
                 <!-- Liên kết đến form sửa sách -->
-                <a href="{{ route('books.edit', $book->id) }}" class="btn btn-warning">Sửa</a>
+                <a href="{{ route('book.edit', $book->id) }}" class="btn btn-warning">Sửa</a>
 
                 <!-- Form xóa sách -->
-                <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline-block;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+                <form action="{{ route('book.destroy', $book->id) }}" method="POST" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
                 </form>
+
             </td>
             </tr>
             @endforeach
