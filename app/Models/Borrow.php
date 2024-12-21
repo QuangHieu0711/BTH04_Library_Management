@@ -18,6 +18,7 @@ class Borrow extends Model
         'book_id',
         'borrow_date',
         'return_date',
+        'status'
     ];
 
     // Định nghĩa mối quan hệ với model Reader
