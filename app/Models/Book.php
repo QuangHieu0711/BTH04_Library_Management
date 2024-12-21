@@ -8,13 +8,7 @@ class Book extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = [
-        'title',
-        'author',
-        'description',
-        'image',
-        'price',
-        'quantity',
-    ];
+    protected $fillable = ['name', 'author', 'category', 'year', 'quantity'];
+
     
 }
