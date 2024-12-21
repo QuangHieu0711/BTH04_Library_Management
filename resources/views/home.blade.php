@@ -286,12 +286,13 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-body-emphasis">
-                    <p class="d-flex align-items-center" style="position:fixed;">
-                        <i class="bi bi-book" style="font-size: 20px;"></i>
-                        <span class="ms-2">Book</span>
-                    </p><br>
-                </a>
+            <a href="{{ route('book.index') }}" class="nav-link link-body-emphasis">
+                <p class="d-flex align-items-center" style="position:fixed;">
+                <i class="bi bi-book" style="font-size: 20px;"></i>
+                <span class="ms-2">Book</span>
+                </p><br>
+            </a>
+
             </li>
 
             <li>
