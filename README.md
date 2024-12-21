@@ -14,7 +14,7 @@
 Đây là giao diện chính của quản lý độc giả.
 ![Giao diện độc giả](assets/images/Giaodiendocgia.png)
 Đây là giao diện chính của quản lý sách
-![Giao diện sách](assets/images/GiaoDienSach.png)
+![Giao diện sách](assets/images/Giaodiensach.png)
 
 ## Learning Laravel
 
