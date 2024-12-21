@@ -10,10 +10,15 @@ use App\Models\Book;
 class BorrowController extends Controller
 {
     // Hiển thị danh sách phiếu mượn
-    public function index()
+    public function index(Request $request)
     {
-        $borrows = Borrow::with('reader', 'book')->get();
-        return view('borrows.index', compact('borrows'));
+        // Lấy danh sách phiếu mượn sắp xếp giảm dần theo id và phân trang
+        $borrows = Borrow::with('reader', 'book')->orderBy('id', 'asc')->paginate(12);
+
+        // Truyền thêm số trang hiện tại cho View
+        $page = $request->input('page', 1); // Mặc định là trang 1 nếu không có tham số
+
+        return view('borrows.index', compact('borrows', 'page'));
     }
 
     // Hiển thị form tạo mới phiếu mượn
