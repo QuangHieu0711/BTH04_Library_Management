@@ -13,6 +13,7 @@ use App\Http\Controllers\BorrowController;
         Route::get('/{name}', [ReaderController::class, 'show'])->name('reader.show');
         Route::get('/{id}/edit', [ReaderController::class, 'edit'])->name('reader.edit');
         Route::put('/{id}', [ReaderController::class, 'update'])->name('reader.update');
+        Route::delete('/{id}', [ReaderController::class, 'destroy'])->name('reader.destroy');
     });
     Route::prefix('books')->group(function () {
             Route::get('/', [BookController::class, 'index'])->name('book.index');
@@ -20,6 +21,7 @@ use App\Http\Controllers\BorrowController;
             Route::post('/store', [BookController::class, 'store'])->name('book.store');
             Route::get('/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
             Route::put('/{id}', [BookController::class, 'update'])->name('book.update');
+            Route::delete('/{id}', [BookController::class, 'destroy'])->name('book.destroy');
     });
     Route::prefix('borrows')->group(function () {
         Route::get('/', [BorrowController::class, 'index'])->name('borrow.index');
