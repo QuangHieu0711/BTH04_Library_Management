@@ -2,35 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Borrow;
 use Illuminate\Http\Request;
+use App\Models\Borrow;
+use App\Models\Reader;
+use App\Models\Book;
 
 class BorrowController extends Controller
 {
-   //Trang chủ
+    // Hiển thị danh sách phiếu mượn
     public function index()
     {
-        //
-        return view('home');  
+        $borrows = Borrow::with('reader', 'book')->get();
+        return view('borrows.index', compact('borrows'));
     }
 
-    //Hiển thị danh sách các phiếu mượn
+    // Hiển thị form tạo mới phiếu mượn
     public function create()
     {
-        // 
-        $readers = Borrow::all();
-        return view("borrow.index", compact("borrows"));
+        $readers = Reader::all();
+        $books = Book::all();
+        return view('borrows.create', compact('readers', 'books'));
     }
 
-   //Hiển thị form tạo mới phiếu mượn
-
+    // Lưu phiếu mượn mới
     public function store(Request $request)
-    {
-        return view("borow.create");
-    }
-
-    //Lưu phiếu mượn mới
-    public function strore(Request $request)
     {
         $request->validate([
             'reader_id' => 'required|exists:readers,id',
@@ -38,37 +33,39 @@ class BorrowController extends Controller
             'borrow_date' => 'required|date',
             'return_date' => 'nullable|date|after:borrow_date',
         ]);
-    
+
         // Tạo mới phiếu mượn trong CSDL
-        Borrow::create($request->all());  
-    
+        Borrow::create($request->all());
+
         // Chuyển hướng về trang danh sách phiếu mượn
         return redirect()->route('borrow.index')->with('success', 'Bạn đã thêm phiếu mượn thành công!');
     }
 
-    //Tìm kiếm phiếu mượn theo tên độc giả
+    // Tìm kiếm phiếu mượn theo tên độc giả
     public function searchByReaderName(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
         ]);
-    
+
         $name = $request->input('name');
         $borrows = Borrow::whereHas('reader', function ($query) use ($name) {
             $query->where('name', 'like', '%' . $name . '%');
         })->get();
-    
-        return view('borrow.index', compact('borrows'));
+
+        return view('borrows.index', compact('borrows'));
     }
 
-    //Hiển thị form sửa thông tin phiếu mượn
+    // Hiển thị form sửa thông tin phiếu mượn
     public function edit(string $id)
     {
         $borrow = Borrow::findOrFail($id);
-        return view('borrow.edit', compact('borrow'));
+        $readers = Reader::all();
+        $books = Book::all();
+        return view('borrows.edit', compact('borrow', 'readers', 'books'));
     }
 
-    //Cập nhật thông tin phiếu mượn
+    // Cập nhật thông tin phiếu mượn
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -77,14 +74,14 @@ class BorrowController extends Controller
             'borrow_date' => 'required|date',
             'return_date' => 'nullable|date|after:borrow_date',
         ]);
-    
+
         $borrow = Borrow::findOrFail($id);
         $borrow->update($request->all());
-    
-        return redirect()->route('borrow.index')->with('success', 'Cập nhật thông tin phiếu mượn thành công!'); 
+
+        return redirect()->route('borrow.index')->with('success', 'Bạn đã cập nhật phiếu mượn thành công!');
     }
 
-    //Xóa phiếu mượn
+    // Xóa phiếu mượn
     public function destroy(string $id)
     {
         $borrow = Borrow::findOrFail($id);
