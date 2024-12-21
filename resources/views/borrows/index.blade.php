@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 
-@section('title', 'DANH SÁCH PHIẾU MƯỢN (BORROW)')
+@section('title', 'QUẢN LÝ PHIẾU MƯỢN (BORROW)')
 
 @section('content')
 <div class="container-xl">
@@ -26,6 +26,15 @@
                     </div>
                 </div>
             </div>
+            <style>
+                /* CSS tùy chỉnh để giảm khoảng cách giữa các hàng trong bảng */
+                .table tbody tr {
+                    padding: 0.05rem 0.25rem; /* Điều chỉnh padding theo nhu cầu */
+                }
+                .table tbody tr td {
+                    padding: 0.05rem 0.25rem; /* Điều chỉnh padding theo nhu cầu */
+                }
+            </style>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -52,13 +61,15 @@
 
                             <!-- Nút mở modal xóa -->
                             <a href="#deleteBorrowModal{{ $borrow->id }}" class="btn btn-danger text-white ms-2" data-bs-toggle="modal" title="Delete"><i class="bi bi-trash"></i></a>
+
                             <!-- Nút cập nhật trạng thái trả sách -->
                             <form action="{{ route('borrow.updateStatus', $borrow->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" class="btn btn-success text-white ms-2" data-toggle="tooltip" title="Update Status"><i class="bi bi-check-circle"></i></button>
                             </form>
-                             <!-- Nút xem lịch sử mượn trả sách -->
+
+                            <!-- Nút xem lịch sử mượn trả sách -->
                             <a href="{{ route('borrow.history', $borrow->reader->id) }}" class="btn btn-info text-white ms-2" data-toggle="tooltip" title="View History"><i class="bi bi-clock-history"></i></a>
 
                             <!-- Modal xác nhận xóa -->
