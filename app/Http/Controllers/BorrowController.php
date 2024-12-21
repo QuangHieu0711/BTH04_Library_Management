@@ -7,6 +7,7 @@ use App\Models\Borrow;
 use App\Models\Reader;
 use App\Models\Book;
 
+
 class BorrowController extends Controller
 {
     // Hiển thị danh sách phiếu mượn
@@ -71,9 +72,9 @@ class BorrowController extends Controller
     }
 
     // Cập nhật thông tin phiếu mượn
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'reader_id' => 'required|exists:readers,id',
             'book_id' => 'required|exists:books,id',
             'borrow_date' => 'required|date',
@@ -81,7 +82,7 @@ class BorrowController extends Controller
         ]);
 
         $borrow = Borrow::findOrFail($id);
-        $borrow->update($request->all());
+        $borrow->update($validatedData);
 
         return redirect()->route('borrow.index')->with('success', 'Bạn đã cập nhật phiếu mượn thành công!');
     }
