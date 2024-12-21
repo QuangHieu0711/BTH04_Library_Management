@@ -35,7 +35,7 @@
                     <tr>
                         <td>{{ $borrow->id }}</td>
                         <td>{{ $borrow->reader->name }}</td>
-                        <td>{{ $borrow->book->title }}</td>
+                        <td>{{ $borrow->book->name }}</td>
                         <td>{{ $borrow->borrow_date }}</td>
                         <td>{{ $borrow->return_date }}</td>
                         <td>
