@@ -9,6 +9,8 @@ use App\Models\Book;
 
 class Borrow extends Model
 {
+     // Tắt tính năng tự động quản lý timestamps
+     public $timestamps = false;
     //
      // Các thuộc tính có thể được gán giá trị hàng loạt
      protected $fillable = [
@@ -29,4 +31,5 @@ class Borrow extends Model
     {
         return $this->belongsTo(Book::class);
     }
+
 }

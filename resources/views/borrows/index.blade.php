@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', 'Danh sách phiếu mượn (BORROW)')
@@ -50,6 +51,48 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="clearfix">
+                <div class="pagination-wrapper" style="float: right;">
+                    @if ($borrows->hasPages())
+                    <ul class="pagination">
+                        {{-- Previous Page Link --}}
+                        @if ($borrows->onFirstPage())
+                        <li class="disabled"><span>&laquo;</span></li>
+                        @else
+                        <li><a href="{{ $borrows->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                        @endif
+
+                        {{-- Pagination Elements --}}
+                        @foreach ($borrows->links()->elements as $element)
+                        {{-- "Three Dots" Separator --}}
+                        @if (is_string($element))
+                        <li class="disabled"><span>{{ $element }}</span></li>
+                        @endif
+
+                        {{-- Array Of Links --}}
+                        @if (is_array($element))
+                        @foreach ($element as $page => $url)
+                        @if ($page == $borrows->currentPage())
+                        <li class="active"><span>{{ $page }}</span></li>
+                        @elseif ($page == 1 || $page == 2 || $page == 3 || $page == $borrows->lastPage() || $page == $borrows->lastPage() - 1 || $page == $borrows->lastPage() - 2)
+                        <li><a href="{{ $url }}">{{ $page }}</a></li>
+                        @elseif ($page == 4)
+                        <li class="disabled"><span>...</span></li>
+                        @endif
+                        @endforeach
+                        @endif
+                        @endforeach
+
+                        {{-- Next Page Link --}}
+                        @if ($borrows->hasMorePages())
+                        <li><a href="{{ $borrows->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                        @else
+                        <li class="disabled"><span>&raquo;</span></li>
+                        @endif
+                    </ul>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 </div>
