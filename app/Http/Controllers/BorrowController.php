@@ -99,17 +99,18 @@ class BorrowController extends Controller
     public function updateStatus($id)
 {
     $borrow = Borrow::findOrFail($id);
+    $borrow->status = 1; // Cập nhật trạng thái trả sách là đã trả
     $borrow->return_date = now(); // Cập nhật ngày trả sách là ngày hiện tại
     $borrow->save();
 
     return redirect()->route('borrow.index')->with('success', 'Cập nhật trạng thái trả sách thành công!');
 }
-// Hiển thị lịch sử mượn sách của độc giả
-public function history($reader_id)
-{
-    $reader = Reader::findOrFail($reader_id);
-    $borrows = Borrow::where('reader_id', $reader_id)->with('book')->get();
+    // Hiển thị lịch sử mượn sách của độc giả
+    public function history($reader_id)
+    {
+        $reader = Reader::findOrFail($reader_id);
+        $borrows = Borrow::where('reader_id', $reader_id)->with('book')->get();
 
-    return view('borrows.history', compact('reader', 'borrows'));
-}
+        return view('borrows.history', compact('reader', 'borrows'));
+    }
 }
