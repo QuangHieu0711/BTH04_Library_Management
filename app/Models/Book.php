@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Testing\Fluent\Concerns\Has;
+use Illuminate\Database\Eloquent\Relations\HasMany;;
 
 class Book extends Model
 {
@@ -17,5 +17,9 @@ class Book extends Model
         'price',
         'quantity',
     ];
+    public function borrows(): HasMany
+    {
+        return $this->hasMany(Borrow::class);
+    }
     
 }
